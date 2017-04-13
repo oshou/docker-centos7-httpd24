@@ -17,8 +17,9 @@ RUN yum clean all
 RUN echo "127.0.0.1 www.example.com" >> /etc/hosts
 RUN echo "ServerName www.example.com" >> /etc/httpd/conf/httpd.conf
 RUN echo "apache development server" >> /var/www/html/index.html
-WORKDIR /var/www/
 EXPOSE 80
+EXPOSE 443
+WORKDIR /var/www/
 
 # httpd startup
 CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
