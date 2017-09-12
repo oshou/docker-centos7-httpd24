@@ -4,16 +4,16 @@ FROM centos:7
 # System update
 RUN yum -y update
 
-# Install Tools
+# Tools
 RUN yum -y install \
-      git \
-      less \
-      vim \
-      curl \
-      wget \
-      zip \
-      unzip \
-      net-tools
+        git \
+        less \
+        vim \
+        curl \
+        wget \
+        zip \
+        unzip \
+        net-tools
 
 # Install httpd
 RUN yum -y install httpd
