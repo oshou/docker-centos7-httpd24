@@ -1,13 +1,13 @@
 version: '2'
 services:
-  data-volume:
+  data-volume
     container_name: 'data-volume'
     image: busybox
     volumes: 
       - ./data/www:/var/www
       - ./logs/httpd:/var/log/httpd
 
-  web_httpd:
+  httpd:
     container_name: 'httpd'
     image: oshou/docker-centos7-httpd24:latest
     volumes_from:

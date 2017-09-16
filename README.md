@@ -5,6 +5,9 @@
 - Timezone
 - Toolsインストール
 - yumキャッシュクリア
+- 運用ユーザの追加(www-data)
+  - vagrantユーザからアクセス可能なようuid1000,gid1000に設定
+- Apache httpd設定
 - http, httpsポートの開放
 
 # 起動方法
