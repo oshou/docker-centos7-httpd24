@@ -1,6 +1,7 @@
 version: '3'
 services:
   web_httpd:
+    container_name: 'httpd'
     build: ./httpd
     volumes:
       - ./data/www:/var/www
