@@ -1,6 +1,12 @@
 # Pull base image
 FROM centos:7
 
+# Locale
+RUN sed -i -e "s/LANG=\"en_US.UTF-8\"/LANG=\"ja_JP.UTF-8\"/g" /etc/locale.conf
+
+# Timezone
+RUN cp -p /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
 # System update
 RUN yum -y update
 
@@ -10,9 +16,6 @@ RUN yum -y install \
         less \
         vim \
         curl \
-        wget \
-        zip \
-        unzip \
         net-tools \
         httpd24 \
 
@@ -20,12 +23,8 @@ RUN yum -y install \
 RUN yum clean all
 
 # httpd setting
-RUN echo "127.0.0.1 www.example.com" >> /etc/hosts
-RUN echo "ServerName www.example.com" >> /etc/httpd/conf/httpd.conf
-RUN echo "apache development server" >> /var/www/html/index.html
-
-VOLUME ["/var/log/httpd"]
-WORKDIR /var/www/
+COPY ./conf/httpd.conf /etc/httpd/conf/httpd.conf
+COPY ./conf/00-mpm.conf /etc/httpd/conf.module.d/00-mpm.conf
 
 # listen port
 EXPOSE 80

@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web_httpd:
+    build: ./httpd
+    volumes:
+      - ./data/www:/var/www
+      - ./logs/httpd:/var/log/httpd
+    ports:
+      - 80:80
+      - 443:443
