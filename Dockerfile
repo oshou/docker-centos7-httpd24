@@ -17,14 +17,14 @@ RUN yum -y install \
         vim \
         curl \
         net-tools \
-        httpd24 \
+        httpd
 
 # Cache cleaning
 RUN yum clean all
 
 # httpd setting
-# COPY ./conf/httpd.conf /etc/httpd/conf/httpd.conf
-# COPY ./conf/00-mpm.conf /etc/httpd/conf.module.d/00-mpm.conf
+COPY ./conf/httpd.conf /etc/httpd/conf/httpd.conf
+COPY ./conf/00-mpm.conf /etc/httpd/conf.module.d/00-mpm.conf
 
 # listen port
 EXPOSE 80
