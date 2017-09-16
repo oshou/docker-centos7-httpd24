@@ -1,6 +1,5 @@
 # docker-centos7-httpd24
 
-
 # 設定内容
 - locale
 - Timezone
