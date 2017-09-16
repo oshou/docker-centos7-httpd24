@@ -13,10 +13,8 @@ RUN yum -y install \
         wget \
         zip \
         unzip \
-        net-tools
-
-# Install httpd
-RUN yum -y install httpd
+        net-tools \
+        httpd24 \
 
 # Cache cleaning
 RUN yum clean all
@@ -25,10 +23,13 @@ RUN yum clean all
 RUN echo "127.0.0.1 www.example.com" >> /etc/hosts
 RUN echo "ServerName www.example.com" >> /etc/httpd/conf/httpd.conf
 RUN echo "apache development server" >> /var/www/html/index.html
+
 VOLUME ["/var/log/httpd"]
-EXPOSE 80
-EXPOSE 443
 WORKDIR /var/www/
 
-# httpd startup
+# listen port
+EXPOSE 80
+EXPOSE 443
+
+# startup
 CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
