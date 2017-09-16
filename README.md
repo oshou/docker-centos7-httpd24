@@ -9,4 +9,4 @@
 
 # 起動方法
 - $ docker pull oshou/docker-centos7-httpd24:latest
-- $ docker run -dit oshou/docker-centos7-httpd24:latest
+- $ docker run -d -p 80:80 -p 443:443 oshou/docker-centos7-httpd24:latest

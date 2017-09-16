@@ -1,11 +1,17 @@
 version: '3'
 services:
+  data:
+    container_name: 'data'
+    image: busybox
+    volumes: 
+      - ./data/www:/var/www
+      - ./logs/httpd:/var/log/httpd
+
   web_httpd:
     container_name: 'httpd'
     build: ./httpd
-    volumes:
-      - ./data/www:/var/www
-      - ./logs/httpd:/var/log/httpd
+    volumes_from:
+      - data
     ports:
       - 80:80
       - 443:443
