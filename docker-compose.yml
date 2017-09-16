@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
   data:
     container_name: 'data'
@@ -9,7 +9,7 @@ services:
 
   web_httpd:
     container_name: 'httpd'
-    build: ./httpd
+    image: oshou/docker-centos7-httpd24:latest
     volumes_from:
       - data
     ports:

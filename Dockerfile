@@ -22,9 +22,13 @@ RUN yum -y install \
 # Cache cleaning
 RUN yum clean all
 
+# User
+RUN groupadd www-data && useradd www-data -g www-data
+
 # httpd setting
 COPY ./conf/httpd.conf /etc/httpd/conf/httpd.conf
 COPY ./conf/00-mpm.conf /etc/httpd/conf.module.d/00-mpm.conf
+RUN chmod -R 755 /var/www && chown -R www-data:www-data /var/www
 
 # listen port
 EXPOSE 80
