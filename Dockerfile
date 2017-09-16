@@ -23,7 +23,7 @@ RUN yum -y install \
 RUN yum clean all
 
 # User
-RUN groupadd www-data && useradd www-data -g www-data
+RUN groupadd --gid 1000 www-data && useradd www-data --uid 1000 --gid 1000
 
 # httpd setting
 COPY ./conf/httpd.conf /etc/httpd/conf/httpd.conf
