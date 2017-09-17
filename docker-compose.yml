@@ -1,6 +1,6 @@
 version: '2'
 services:
-  data-volume
+  data-volume:
     container_name: 'data-volume'
     image: busybox
     volumes: 
